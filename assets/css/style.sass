@@ -1,0 +1,1268 @@
+* 
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+body 
+    padding: 0
+    margin: 0
+    font-family: "Ubuntu", sans-serif
+    font-weight: 400
+    width: 100%
+    height: 100vh
+    overflow-x: hidden  
+    scroll-behavior: smooth
+
+.nav
+    position: absolute 
+    top: 0
+    left: 0
+    width: 100%
+    height: 80px
+    z-index: 19
+    display: flex
+    align-items: center
+    transition: all 0.25s ease
+    &-logo 
+        margin: 0 0 0 30px
+        border-radius: 50%
+        padding: 6px
+        display: flex
+        justify-content: center
+        align-items: center 
+        cursor: pointer
+        transition: background 0.35s ease
+        &__img 
+            width: 60px
+            border-radius: 50%
+        &:hover 
+            background: rgba(255, 255, 255, 0.5)
+    &--active 
+        height: 80px
+        background: rgb(41, 77, 107)
+        position: fixed
+        animation: nav-slide 0.25s ease
+
+.nav-burger 
+    width: 60px
+    height: 40px
+    position: absolute
+    top: 24px
+    right: 20px 
+    cursor: pointer
+    z-index: 23
+    &__line 
+        width: 40px
+        height: 3px
+        background: #fff
+        display: block
+        border-radius: 10px
+        position: absolute
+        transition: all 0.25s ease
+        &--first 
+            top: 10px
+            left: 8px
+        &--second
+            top: 22px
+            left: 8px
+            
+    &--active 
+        &:hover 
+            .nav-burger__line 
+                &--first 
+                    top: 15px !important
+                    left: 8px !important
+                &--second
+                    top: 15px !important
+                    left: 8px !important
+        .nav-burger__line--first 
+            transform: rotate(45deg)
+            top: 15px
+            left: 8px
+        .nav-burger__line--second 
+            transform: rotate(-45deg)
+            top: 15px
+            left: 8px   
+    &__scroll--active
+        top: 24px
+        right: 20px  
+        position: fixed
+        animation: nav-slide 0.25s ease
+    &:hover
+        .nav-burger__line 
+            &--first 
+                top: 22px
+                left: 8px
+            &--second
+                top: 10px
+                left: 8px
+
+
+.sidebar 
+    position: fixed
+    width: 100%
+    height: 100%
+    background: rgba(0,0,0,0.9)
+    z-index: 20
+    overflow: hidden
+    justify-content: center
+    align-items: center
+    text-align: center
+    color: #fff
+    animation: sidebar-open 1s ease
+    &--open 
+        display: flex
+    &--close 
+        animation: sidebar-close 1s ease
+        transform: translateY(100vh)
+        display: flex
+    &--hidden 
+        display: none
+    li
+        width: 100vw
+        list-style: none
+    &__item 
+        color: #ffffff
+        text-decoration: none
+        font-family: "Roboto", sans-serif
+        font-weight: 100
+        font-size: 24px
+        padding: 20px
+        display: block
+        background: linear-gradient(45deg, #0AC2B7, #1AC67E)
+        background-position-x: 0%
+        background-size: 0 100%
+        background-repeat: no-repeat
+        transition: background 0.35s ease, opacity 0.5s ease, letter-spacing 0.35s ease
+        letter-spacing: 2px
+        text-transform: uppercase
+        opacity: 0
+        &::before,
+        &::after 
+            display: inline-block
+            opacity: 0
+            transition: transform 0.3s, opacity 0.2s
+            transition-delay: 0.35s    
+        &::before 
+            margin-right: 10px
+            content: '['
+            transform: translateX(20px)
+        &::after 
+            margin-left: 10px
+            content: ']'
+            transform: translateX(-20px)
+        &:hover 
+            background-size: 100% 100%
+            letter-spacing: 6px   
+        &:hover::before,
+        &:hover::after
+            opacity: 1
+            transform: translateX(0px)
+        &-active 
+            opacity: 1
+.header
+    width: 100%
+    height: 100%
+    background: url("../img/header.webp") no-repeat center center fixed
+    background-size: cover
+    background-position: 50% 0
+    position: relative
+    @media screen and(max-width: 600px)
+        background: none
+    &-gradient 
+        width: 100%
+        height: 100%
+        background: linear-gradient(45deg, rgba(49, 42, 108, 0.6) 50%, rgba(133, 45, 145, 0.6) 100%)
+        display: flex
+        justify-content: center
+        align-items: center
+        text-align: center
+        @media screen and(max-width: 600px)
+            // background: linear-gradient(25deg, #19FE7A, #62B3FF, #F27EFF)
+            background: linear-gradient(135deg, #E96282, #947CDE, #28E0F8)
+    &-info 
+        color: #fff
+        &__header
+            font-weight: 900
+            font-size: 2.8em
+            border: 6px solid currentColor
+            padding: 10px 40px
+            margin: 0 20px
+            text-transform: uppercase
+            letter-spacing: 3px
+            color: #fff
+            font-family: "Roboto Slab", serif
+            font-weight: 700
+            @media screen and(max-width: 600px)
+                font-size: 1.6em
+
+            @media screen and(max-width: 400px)
+                font-size: 1.4em
+                letter-spacing: 2px 
+
+            @media screen and(max-width: 360px)
+                font-size: 1em
+                letter-spacing: 2px
+
+            @media screen and(max-width: 320px)
+                font-size: 0.8em
+                letter-spacing: 1px    
+                
+        &__paragraph
+            font-family: "Roboto", sans-serif
+            font-weight: bold
+            padding: 4px
+            font-size: 1em
+            letter-spacing: 5px
+            color: #ffd163
+            padding-top: 20px
+            text-transform: uppercase
+            &--yellow 
+                color: #ffd163
+
+            @media screen and(max-width: 600px)
+                font-size: 0.9em
+                letter-spacing: 3px
+                color: #fff
+                &--yellow 
+                    color: #fff
+
+            @media screen and(max-width: 360px)
+                font-size: 0.8em
+                letter-spacing: 2px  
+
+    &-mouse 
+        border: 2px solid #ffd163
+        border-radius: 30px
+        height: 40px
+        width: 20px  
+        position: absolute
+        bottom: 20px
+        display: flex
+        justify-content: center
+        @media screen and(max-width: 768px) 
+            display: none
+        &__wheel
+            width: 4px
+            height: 4px
+            background: #ffffff
+            border-radius: 50%
+            margin-top: 4px
+            animation: mouse-wheel 0.8s ease infinite
+
+// ABOUT
+.about 
+    position: relative
+    width: 100%
+    padding: 10px 10px 100px 10px
+    &__img 
+        max-width: 100%
+        border-radius: 50%
+        cursor: zoom-in
+    &__header--2
+        text-align: center
+        font-size: 32px
+        font-family: "Roboto Slab", serif
+        font-weight: 700
+        margin: 20px 0 0 0
+        text-transform: uppercase
+    &__header--3 
+        position: relative
+        text-align: center
+        margin: 10px 0 60px 0
+        font-family: "Roboto", sans-serif
+        font-weight: 300
+        font-size: 16px
+        letter-spacing: 2px
+        text-transform: uppercase
+        &:before 
+            content: ''
+            width: 60px
+            height: 3px
+            display: block
+            z-index: 1
+            background: #ffd163
+            margin: 4px auto
+    &__header--4
+        text-align: center 
+        font-family: "Roboto", sans-serif
+        font-weight: 400
+        font-size: 24px
+        margin-bottom: 60px  
+    &__paragraph
+        font-weight: 400
+        line-height: 1.5
+        &--name 
+            font-family: "Roboto", sans-serif
+            font-weight: 100
+        &--icon
+            display: inline-block
+            vertical-align: middle
+            padding-right: 6px
+        &--link 
+            color: #FE8A75
+            text-decoration: none
+            position: relative
+            transition: all 0.6s
+            &:before 
+                content: ""
+                width: 0
+                height: 0.1em
+                position: absolute
+                bottom: 0
+                right: 0
+                background: #71bd47
+                transition: all 0.3s
+            &:hover 
+                &:before 
+                    width: 100%
+                    left: 0
+                    background: #FE8A75 
+
+.modal-img
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%  
+    background: rgba(0,0,0,0.68)
+    animation: modal-img 0.1s ease
+    display: none
+    z-index: 24 
+    img 
+        height: 100%
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+    &__close 
+        position: absolute
+        top: 30px
+        right: 30px
+        color: #ffd163
+        cursor: pointer
+        z-index: 25
+    &__open 
+        display: block
+
+.hobby 
+    position: relative
+    width: 100%
+    padding: 60px 10px 100px 10px
+    text-align: center
+    background: linear-gradient(45deg, #5b25ac, #00c488)
+    color: #fff
+    &__header--2   
+        text-align: center
+        font-size: 32px
+        font-family: "Roboto Slab", serif
+        font-weight: 700
+        margin: 20px 0 0 0
+        text-transform: uppercase 
+    &__header--3 
+        position: relative
+        text-align: center
+        margin: 10px 0 60px 0
+        font-family: "Roboto", sans-serif
+        font-weight: 300
+        font-size: 16px
+        letter-spacing: 2px
+        text-transform: uppercase
+        &:before 
+            content: '' 
+            width: 60px
+            height: 3px
+            display: block
+            z-index: 1
+            background: #ffd163
+            margin: 4px auto
+    &__paragraph
+        font-size: 24px
+        font-family: "Roboto", sans-serif
+        font-weight: 700
+
+.skills 
+    position: relative
+    width: 100%
+    padding: 60px 10px 100px 10px
+    &__header--2   
+        text-align: center
+        font-size: 32px
+        font-family: "Roboto Slab", serif
+        font-weight: 700
+        margin: 20px 0 0 0
+        text-transform: uppercase 
+    &__header--3 
+        position: relative
+        text-align: center
+        margin: 10px 0 60px 0
+        font-family: "Roboto", sans-serif
+        font-weight: 300
+        font-size: 16px
+        letter-spacing: 2px
+        text-transform: uppercase
+        &:before 
+            content: '' 
+            width: 60px
+            height: 3px
+            display: block
+            z-index: 1
+            background: #ffd163
+            margin: 4px auto
+    &-card
+        padding: 20px 10px 20px 10px
+        background: #fff
+        border-radius: 30px
+        transition: all 0.5s
+        box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.5)
+        &:hover 
+            box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2)
+            background: #4d05ba
+            transform: translateY(-8px)
+            color: #fff
+        &__header--4 
+            text-align: center 
+            font-size: 20px
+            font-family: "Roboto", sans-serif
+            font-weight: 300
+            letter-spacing: 1px
+            padding: 0 0 20px 0
+        &-paragraph 
+            font-size: 16px
+            font-family: "Roboto", sans-serif
+            font-weight: 300
+        &-items 
+            list-style: none
+            width: 98%
+            margin: 0 auto
+        &-item 
+            margin: 0 0 16px 0
+        &-progressbar
+            width: 100%
+            height: 4px
+            background: #eee 
+            margin: 4px 0 10px 0
+            width: 100%
+            display: flex
+            align-items: center
+            &-line 
+                transition: all 1s ease
+                width: 0%
+                height: 6px
+                background: #ffd163   
+                display: block 
+                border-radius: 0 10px 10px 0
+.portfolio
+    position: relative
+    width: 100%
+    padding: 60px 10px 100px 10px
+    background: linear-gradient(45deg, #43CEA2, #185A9D)
+    &__header--2   
+        text-align: center
+        font-size: 32px
+        font-family: "Roboto Slab", serif
+        font-weight: 700
+        margin: 20px 0 0 0
+        text-transform: uppercase 
+        color: #fff
+    &__header--3 
+        position: relative
+        text-align: center
+        margin: 10px 0 60px 0
+        font-family: "Roboto", sans-serif
+        font-weight: 300
+        font-size: 16px
+        letter-spacing: 2px
+        text-transform: uppercase
+        color: #fff
+        &:before 
+            content: '' 
+            width: 60px
+            height: 3px
+            display: block
+            z-index: 1
+            background: #ffd163
+            margin: 4px auto
+    &-card 
+        background: #ffffff
+        border-radius: 12px
+        box-shadow: 1px 6px 15px rgba(0, 0, 0, 0.5)
+        transition: all 0.3s ease
+        &:hover 
+            box-shadow: 0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2)
+            transform: translateY(-8px) scale(1.004)
+        &__img 
+            max-width: 100%
+            padding: 0 0 20px 0
+            border-radius: 12px 12px 0 0
+        &__header--5
+            font-size: 18px
+            padding: 0 0 10px 10px
+        &__paragraph
+            font-weight: 400
+            font-size: 16px
+            padding: 0 10px 10px 10px
+            line-height: 1.4
+            border-bottom: 1px solid #e0e0e0
+            &--without-line
+                font-weight: 400
+                font-size: 16px
+                padding: 0 10px 10px 10px
+                line-height: 1.4
+        &__link
+            margin: 10px
+            padding: 10px
+            display: inline-block
+            text-decoration: none
+            text-transform: uppercase
+            letter-spacing: 1px
+            border-radius: 3px
+            font-family: "Roboto", sans-serif
+            font-weight: 400
+            color: #6200EE
+            transition: all 0.25s ease
+            &:hover 
+                background: #ebebeb
+            &:focus 
+                background: #cccccc
+.resume 
+    position: relative
+    width: 100%
+    padding: 100px 10px 100px 10px
+    display: flex
+    justify-content: center
+    align-items: center
+    // background: url(../img/resume.webp)
+    background-repeat: no-repeat
+    background-size: cover
+    background-attachment: fixed
+    @media screen and(max-width: 600px)
+        display: block
+        text-align: center 
+        background: linear-gradient(45deg, #333333 50%, #5A5454 100%) !important
+    &__paragraph
+        font-size: 40px
+        margin: 20px
+        color: #fff
+        @media screen and(max-width: 950px)
+            font-size: 20px
+
+        @media screen and(max-width: 768px) 
+            font-size: 18px
+
+        @media screen and(max-width: 600px)
+            font-size: 20px
+   
+.contact 
+    position: relative
+    width: 100%
+    padding: 60px 0 0 0 
+    background: linear-gradient(45deg, #fee2cd, #fec2e7, #c9e7ff, #86fef4)
+    background: linear-gradient(50deg, #CD53A8, #FFBDA5, #FAF2E5, #53CAE5)
+    &-header-2   
+        text-align: center
+        font-size: 32px
+        font-family: "Roboto Slab", serif
+        font-weight: 700
+        margin: 20px 0 0 0
+        text-transform: uppercase
+    &-header-3 
+        position: relative
+        text-align: center
+        margin: 10px 0 60px 0
+        font-family: "Roboto", sans-serif
+        font-weight: 300
+        font-size: 16px
+        letter-spacing: 2px
+        text-transform: uppercase
+        &:before 
+            content: '' 
+            width: 60px
+            height: 3px
+            display: block
+            z-index: 1
+            background: #ffd163
+            margin: 4px auto
+    &-card 
+        position: relative
+        width: 100%
+        max-width: 800px
+        margin: 10px auto
+        padding: 40px 30px
+        box-shadow: 0px 8px 60px -10px rgba(13,28,39,0.6)
+        border-radius: 12px
+        background: #ffffff
+        @media screen and(max-width: 600px)
+            width: 90%
+        &-form 
+            &-input 
+                padding: 14px
+                width: 100%
+                border: 2px solid #dcdcdc
+                color: #324e63
+                background: #ffffff
+                font-size: 16px
+                border-radius: 10px
+                transition: all 0.25s ease
+                &:focus
+                    outline: none
+                    border-color: #8a979e
+                &-error 
+                    border: 2px solid #ce0a2e
+            &-textarea 
+                resize: none
+                width: 100%
+                border: 2px solid #dcdcdc
+                color: #324e63
+                background: #ffffff
+                padding: 14px
+                font-size: 18px
+                height: 100px
+                border-radius: 10px
+                &:focus
+                    outline: none
+                    border-color: #8a979e
+                &-error 
+                    border: 2px solid #ce0a2e
+            &-error 
+                color: #ce0a2e
+                margin: 2px 0 10px 14px 
+                font-family: "Roboto", sans-serif
+                font-weight: 300
+    &-modal 
+        position: fixed
+        top: 0
+        left: 0
+        width: 100%
+        height: 100vh
+        background: rgba(0, 0, 0, 0.38)
+        z-index: -1
+        overflow: hidden
+        opacity: 0
+        transition: all 0.25s ease
+        &-content
+            position: fixed
+            top: 10%
+            left: 50%
+            transform: translate(-50%, -50%) scale(0.6)
+            width: 50%
+            max-height: 70%
+            height: auto
+            padding: 48px 24px
+            background: #ffffff
+            border-radius: 2px
+            transition: all 0.25s ease
+            overflow-x: hidden
+            overflow-y: auto
+            @media screen and(max-width: 950px)
+                width: 70%
+
+            @media screen and(max-width: 768px)
+                width: 90%   
+
+            @media screen and(max-width: 600px)
+                top: 20%     
+            &-paragraph
+                font-family: 300
+                font-size: 20px
+                padding: 10px
+        &-open 
+            z-index: 223
+            opacity: 1
+            .contact-modal-content
+                transform: translate(-50%, -50%) scale(1,1)
+                top: 30% 
+            @media screen and(max-width: 600px)
+                .contact-modal-content
+                    top: 40%            
+    &-map 
+        margin-top: 160px
+        padding: 0
+        iframe 
+            width: 100%
+            height: 600px 
+            border: none
+    &-social 
+        width: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-wrap: wrap
+        padding: 20px 20px 30px 20px
+        text-align: center
+        background: #ffffff
+        &-item 
+            font-size: 30px 
+            padding: 20px
+            color: #aaa
+            text-decoration: none
+            display: inline-flex
+            width: 55px
+            height: 55px
+            margin: 15px
+            border-radius: 50%
+            align-items: center
+            justify-content: center
+            color: #fff
+            background: #ffd163
+            box-shadow: 0px 7px 30px rgba(43,98,169,0.5)
+            position: relative
+            font-size: 21px
+            flex-shrink: 0
+            transition: all .3s
+            @media screen and (max-width: 768px) 
+                width: 50px
+                height: 50px
+                margin: 10px
+
+            @media screen and (min-width: 768px)
+                &:hover 
+                    transform: scale(1.2)
+
+            &-icon 
+                display: inline-flex
+
+.telegram 
+    background: linear-gradient(45deg, #7AA5DA, #41B4E6)   
+    box-shadow: 0px 4px 30px rgba(43,98,169,0.5)        
+
+.vk
+    background: linear-gradient(45deg, #01579B, #1E88E5)   
+    box-shadow: 0px 4px 30px rgba(43,90,169,0.5)      
+
+.facebook 
+    background: linear-gradient(45deg, #3b5998, #0078d7)
+    box-shadow: 0px 4px 30px rgba(43, 98, 169, 0.5)   
+
+.twitter 
+    background: linear-gradient(45deg, #1da1f2,#0e71c8)
+    box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.7)  
+
+.instagram 
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d)
+    box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6)                   
+
+.linkedin
+    background: linear-gradient(45deg, #00ACC1, #007AAA)
+    box-shadow: 0px 4px 30px rgba(15, 97, 130, 0.6) 
+
+.github 
+    background: linear-gradient(45deg, #333333, #626b73)
+    box-shadow: 0px 4px 30px rgba(63, 65, 67, 0.6)
+
+.codepen 
+    background: linear-gradient(45deg, #324e63, #414447)
+    box-shadow: 0px 4px 30px rgba(55, 75, 90, 0.6)
+
+.tel 
+    background: linear-gradient(45deg, #d5135a, #f05924)
+    box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6)
+
+.btn
+    background: none
+    border: none
+    font-family: 'Roboto', sans-serif
+    font-weight: 900
+    font-size: 18px
+    margin: 15px 35px 15px 0
+    padding: 12px 30px
+    min-width: 201px
+    border-radius: 50px
+    min-height: 55px
+    letter-spacing: 1px
+    color: #fff
+    cursor: pointer
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    backface-visibility: hidden
+    text-decoration: none
+    transition: all .3s
+
+    @media screen and (max-width: 768px) 
+        min-width: 170px
+        margin: 15px 25px
+
+    @media screen and (max-width: 576px) 
+        min-width: inherit
+        margin: 0
+        margin-bottom: 16px
+        width: 100%
+        max-width: 300px
+    &:focus 
+        outline: none
+    @media screen and (min-width: 768px) 
+        &:hover 
+            transform: translateY(-5px)
+    
+    &:first-child 
+        margin-left: 0    
+
+    &--blue 
+        background: linear-gradient(45deg, #1da1f2, #0e71c8)
+        box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.4)
+        &:hover 
+            box-shadow: 0px 7px 30px rgba(19, 127, 212, 0.75)   
+
+    &--gray 
+        box-shadow: none
+        background: #dcdcdc
+        color: #142029
+
+    &--orange 
+        background: linear-gradient(45deg, #d5135a, #f05924)
+        box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35)
+        &:hover 
+            box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75)   
+
+.footer 
+    padding: 30px 30px 30px 50px
+    background: #222222
+    position: relative
+    &__btn-top
+        border: none
+        border-radius: 50%
+        cursor: pointer
+        background: #222222
+        padding: 14px
+        position: absolute
+        left: 50%
+        top: -25%
+        transform: translateX(-50%)
+        transition: all 0.5s ease
+        &:hover 
+            transform: translateX(-50%) scale(1.2)
+        &:focus 
+            outline: none
+        svg
+            transform: rotate(-90deg)           
+    &-paragraph
+        color: #fff
+        font-family: "Roboto", sans-serif
+        font-size: 16px
+        font-weight: 100
+
+.modal 
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100vh
+    background: rgba(0, 0, 0, 0.38)
+    z-index: -1
+    overflow: hidden
+    opacity: 0
+    transition: all 0.25s ease
+    &-content
+        position: fixed
+        top: 10%
+        left: 50%
+        transform: translate(-50%, -50%) scale(0.6,0.6)
+        width: 50%
+        max-height: 70%
+        min-height: 500px
+        height: auto
+        padding: 0px 24px
+        background: #ffffff
+        border-radius: 2px
+        transition: all 0.25s ease
+        overflow-x: hidden
+        overflow-y: auto
+        text-align: left
+        display: flex 
+        justify-content: center
+        align-items: center
+
+        @media screen and(max-width: 950px) 
+            width: 70%
+
+        @media screen and(max-width: 768px) 
+            width: 90%   
+
+        @media screen and(max-width: 600px)
+            top: 20%
+            
+        &-header-4
+            text-align: center
+            font-family: "Roboto Slab", serif
+            font-weight: 700
+            font-size: 20px
+            padding: 20px
+        form 
+            width: 100%
+            margin: 0 auto
+        &-input 
+            padding: 14px
+            width: 100%
+            border: 2px solid #dcdcdc
+            color: #324e63
+            background: #ffffff
+            font-size: 16px
+            border-radius: 10px
+            &:focus
+                outline: none
+                border-color: #8a979e
+            &-error
+                border: 2px solid #ce0a2e   
+        &-select 
+            padding: 14px
+            border: 2px solid #dcdcdc
+            width: 100%
+            color: #324e63
+            background: #ffffff
+            font-size: 16px
+            font-weight: 300
+            border-radius: 2px
+            border-radius: 10px
+            appearance: none
+            &:focus
+                outline: none
+                border-color: #8a979e
+            &-error
+                border: 2px solid #ce0a2e    
+        &-textarea 
+            resize: none
+            width: 100%
+            border: 2px solid #dcdcdc
+            color: #324e63
+            background: #ffffff
+            padding: 14px
+            border-radius: 10px
+            font-size: 18px
+            height: 100px
+            &:focus
+                outline: none
+                border-color: #8a979e
+            &-error 
+                border: 2px solid #ce0a2e
+        &-error    
+            color: #ce0a2e
+            margin: 2px 0 10px 14px 
+            font-family: "Roboto", sans-serif
+            font-weight: 300  
+        &-footer 
+            display: flex
+            justify-content: center
+            align-items: center    
+            flex-wrap: wrap
+            width: 100%         
+    &-open 
+        z-index: 223
+        opacity: 1
+        .modal-content
+            transform: translate(-50%, -50%) scale(1,1)
+            top: 40%
+        @media screen and(max-width: 600px) 
+            .modal-content
+                top: 45%    
+
+::placeholder
+    color: #324e63
+::-webkit-scrollbar 
+    width: 8px
+    height: 12px
+::-webkit-scrollbar-thumb:vertical 
+    background: #272c35
+::-webkit-scrollbar-thumb:vertical:hover 
+    background: rgb(41, 77, 107) 
+
+.html 
+    background: linear-gradient(45deg, #994613, #ff6100)
+    &-active 
+        width: 90%
+.css 
+    background: linear-gradient(45deg, #15368c, #0b49e5)
+    &-active
+        width: 87%
+.js 
+    background: #F7DF1E
+    &-active 
+        width: 57%
+.jquery 
+    background: #0F67AE
+    &-active 
+        width: 68%
+.react
+    background: #5ED3F3 
+    &-active 
+        width: 6%
+.ajax 
+    background: #358ECA
+    &-active 
+        width: 82%        
+.json 
+    background: #282828
+    &-active 
+        width: 97%
+.php 
+    background: #5A69A6
+    &-active 
+        width: 56%
+.rbp
+    background: #C00000
+    &-active 
+        width: 78%
+.cpp 
+    background: #6295CB
+    &-active 
+        width: 18%
+.cs 
+    background: #964D91
+    &-active 
+        width: 16%
+.python 
+    background: #F0C331
+    &-active 
+        width: 20%
+.bash 
+    background: #3C4548
+    &-active 
+        width: 8%
+.linux 
+    background: #F1AA00
+    &-active
+        width: 59%
+.lamp 
+    background: #014F8E
+    &-active 
+        width: 78%
+.git 
+    background: #E84E31
+    &-active
+        width: 57%
+.vsc 
+    background: #016DB6
+    &-active
+        width: 71%
+.pst
+    background: #944CEB
+    &-active 
+        width: 54%        
+.sbl 
+    background: #F79202
+    &-active
+        width: 83%  
+.fz 
+    background: #B60000
+    &-active 
+        width: 69%
+.ps 
+    background: #00C2F7
+    &-active 
+        width: 35%
+.sv 
+    background: #1090c9
+    &-active 
+        width: 18%
+.mw 
+    background: #2A5699
+    &-active 
+        width: 47%    
+.mp 
+    background: #CB4A32
+    &-active 
+        width: 58% 
+.me 
+    background: #02723B
+    &-active 
+        width: 39%
+.ma 
+    background: #A33639
+    &-active 
+        width: 16%                
+.ua
+    background: #F4E997
+    &-active 
+       width: 87%
+.ru 
+    background: #CB001A
+    &-active
+        width: 85%
+.en 
+    background: #842C6E
+    &-active 
+        width: 43%
+.de
+    background: #ffcf00
+    &-active 
+        width: 2%
+
+#programming 
+    path, line, polyline 
+        stroke: #ffd163
+        stroke-width: 6px
+    path 
+        fill: transparent
+
+#technology 
+    path, line, polyline 
+        stroke: #ffd163
+        stroke-width: 6px
+    path 
+        fill: transparent
+
+#music 
+    path, line, polyline 
+        stroke: #ffd163
+        stroke-width: 1px
+    path 
+        fill: transparent
+
+#cycle 
+    path, line, polyline 
+        stroke: #ffd163
+        stroke-width: 6px
+    path 
+        fill: transparent                        
+
+@keyframes mouse-wheel
+    from 
+        margin-top: 4px
+        opacity: 1
+    to 
+        margin-top: 24px
+        opacity: 0
+
+@keyframes modal-img 
+    from 
+        transform: scale(4,4)
+    to 
+        transform: scale(1,1)
+
+@keyframes sidebar-open
+    0% 
+        transform: translateY(100vh) scale(0.6, 0.6)
+    50% 
+        transform: translateY(0) scale(0.6, 0.6)
+    100% 
+        transform: translateY(0) scale(1, 1)
+
+@keyframes sidebar-close
+    0% 
+        transform: translateY(0) scale(1, 1)
+    50% 
+        transform: translateY(0) scale(0.6, 0.6)
+    100% 
+       transform: translateY(100vh) scale(0.6, 0.6)
+    
+@keyframes nav-slide 
+    from 
+        transform: translateY(-80px)
+    to 
+        transform: translateY(0)
+
+@keyframes fadeInUp 
+    from 
+        opacity: 0
+        transform: translate3d(0, 100%, 0)
+    to 
+        opacity: 1
+        transform: translate3d(0, 0, 0)
+
+.fadeInUp 
+    animation-name: fadeInUp
+
+@keyframes flipInY 
+    from 
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg)
+        animation-timing-function: ease-in
+        opacity: 0
+    40% 
+        transform: perspective(400px) rotate3d(0, 1, 0, -20deg)
+        animation-timing-function: ease-in
+    60% 
+        transform: perspective(400px) rotate3d(0, 1, 0, 10deg)
+        opacity: 1
+    80% 
+        transform: perspective(400px) rotate3d(0, 1, 0, -5deg)
+    to 
+        transform: perspective(400px)
+
+@keyframes fadeInDown 
+    from 
+        opacity: 0
+        transform: translate3d(0, -100%, 0)
+
+    to 
+        opacity: 1
+        transform: translate3d(0, 0, 0)
+
+.fadeInDown 
+    animation-name: fadeInDown    
+
+.flipInY 
+    backface-visibility: visible!important
+    animation-name: flipInY
+
+@keyframes lightSpeedIn 
+    from 
+        transform: translate3d(100%, 0, 0) skewX(-30deg)
+        opacity: 0
+    60% 
+        transform: skewX(20deg)
+        opacity: 1
+    80% 
+        transform: skewX(-5deg)
+    to 
+        transform: translate3d(0, 0, 0)
+
+.lightSpeedIn 
+    animation-name: lightSpeedIn
+    animation-timing-function: ease-out
+
+@keyframes zoomIn 
+    from 
+        opacity: 0
+        transform: scale3d(.3, .3, .3)
+    50% 
+        opacity: 1
+    
+.zoomIn
+    animation-name: zoomIn
+
+.animated 
+    animation-duration: 1s
+    animation-fill-mode: both
+
+.row 
+    position: relative
+    width: 100%
+
+.row [class^=col] 
+    float: left
+    margin: .5rem 2%
+    min-height: .125rem
+
+.col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9 
+    width: 96%
+    
+.row::after 
+    content: ""
+    display: table
+    clear: both
+
+@media only screen and (min-width:45em) 
+    .col-1 
+        width: 4.33%
+    .col-2 
+        width: 12.66%
+    .col-3 
+        width: 21%
+    .col-4 
+        width: 29.33%
+    .col-5 
+        width: 37.66%
+    .col-6 
+        width: 46%
+    .col-7 
+        width: 54.33%
+    .col-8 
+        width: 62.66%
+    .col-9 
+        width: 71%
+    .col-10 
+        width: 79.33%
+    .col-11 
+        width: 87.66%
+    .col-12 
+        width: 96% 

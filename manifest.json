@@ -1,0 +1,17 @@
+{
+    "short_name": "Vadim Filatov",
+    "name": "Вадим Филатов - Web Developer. Создание сайтов",
+    "description": "Занимаюсь разработкой сайтов с нуля, под ключ. Выполняю верстку и программирование сайтов. Добавляю весь необходимый функционал на сайт.",
+    "icons": [
+        {
+            "src": "assets/icon/favicon.ico",
+            "sizes": "512x512 192x192 168x168 144x144 96x96 72x72 64x64 32x32 24x24 16x16",
+            "type": "image/x-icon"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#294d6b",
+    "background_color": "#ffffff"
+}
